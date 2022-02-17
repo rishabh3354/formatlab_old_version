@@ -519,7 +519,7 @@ ln -sfn $REALHOME/.config/ibus/bus $IBUS_CONFIG_PATH
 #############################
 
 # select qt version
-. $SNAP/pyqt5-runtime-core20/flavor-select
+USE_qt5=true
 
 export QTCHOOSER_NO_GLOBAL_DIR=1
 if [ "$USE_qt5" = true ]; then
