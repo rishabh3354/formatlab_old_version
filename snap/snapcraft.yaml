@@ -1,0 +1,77 @@
+name: formatlab
+base: core20
+version: '1.0' # just for humans, typically '1.2+git' or '1.3.2'
+summary: FormatLab Video/Audio Lossless Converter
+description: FormatLab is a powerful Video/Audio Converter and Compressor for Linux OS which supports MP3, MP4, AVI, WMV, MKV or other file formats with Lossless Quality conversion.
+grade: stable # must be 'stable' to release into candidate/stable channels  / before dev use devel
+confinement: strict # use 'strict' once you have the right plugs and slots / before dev use devmode
+
+icon: snap/gui/icon.png
+
+architectures:
+  - build-on: [amd64]
+
+apps:
+  formatlab:
+    command: bin/desktop-launch python3 $SNAP/formatlab.py
+    plugs: 
+       - home
+       - gsettings
+       - network
+       - network-bind
+       - network-status
+       - desktop
+       - desktop-legacy
+       - x11
+       - unity7
+       - wayland
+       - opengl
+       - audio-playback
+       - hardware-observe
+    desktop: formatlab.desktop
+
+plugs:
+  gsettings:
+  gtk-3-themes:
+    interface: content
+    target: $SNAP/data-dir/themes
+    default-provider: gtk-common-themes
+  icon-themes:
+    interface: content
+    target: $SNAP/data-dir/icons
+    default-provider: gtk-common-themes
+  sound-themes:
+    interface: content
+    target: $SNAP/data-dir/sounds
+    default-provider: gtk-common-themes
+  pyqt5-runtime:
+    interface: content
+    target: $SNAP/pyqt5-runtime
+    default-provider: pyqt5-runtime
+
+
+parts:
+  desktop-gui:
+    plugin: dump
+    source: src/
+    override-build: |
+      snapcraftctl build
+      sed -i 's|Icon=.*|Icon=${SNAP}/meta/gui/icon.png|g' ${SNAPCRAFT_PART_SRC}/formatlab.desktop
+      mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/share/applications/
+      cp -rf ${SNAPCRAFT_PART_SRC}/formatlab.desktop ${SNAPCRAFT_PART_INSTALL}/usr/share/applications/formatlab.desktop
+
+
+  snap-launcher:
+    plugin: dump
+    source: snap_launcher/
+
+  formatlab:
+      plugin: python
+      source: .
+      python-packages: 
+          - requests
+          - cryptography
+          - psutil
+          - ffmpeg-python
+          - python-slugify
+      build-attributes: [ keep-execstack ]
