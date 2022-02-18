@@ -60,7 +60,7 @@ class MainWindow(QMainWindow):
         self.after_playback_action = "loop_play"
         self.speed = "0.0"
         self.unit = "B/s"
-        self.file_dialog = 'native'
+        self.file_dialog = 'qt'
         self.mpv_arguments = []
         self.Default_loc_video = get_initial_download_dir()
         self.Default_loc_audio = get_initial_download_dir()
@@ -523,7 +523,7 @@ class MainWindow(QMainWindow):
             self.app_setting_ui.ui.download_path_edit_2.setText(self.Default_loc_video + "/FORMAT_LAB")
             self.app_setting_ui.ui.download_path_edit_playlist.setText(self.Default_loc_audio + "/FORMAT_LAB")
             self.Default_loc_import = get_initial_download_dir()
-            self.file_dialog = 'native'
+            self.file_dialog = 'qt'
             #  file dialog defaults
             if self.file_dialog == "native":
                 self.app_setting_ui.ui.native_dialog.setChecked(True)
@@ -776,10 +776,18 @@ class MainWindow(QMainWindow):
         try:
             if self.msg.clickedButton() == open_folder:
                 print(folder_path)
-                QDesktopServices.openUrl(QUrl.fromLocalFile(folder_path))
+                try:
+                    os.system(f"xdg-open {folder_path}")
+                except Exception as er:
+                    print("error from os.system", folder_path, er)
+                QDesktopServices.openUrl(QUrl(folder_path))
             elif self.msg.clickedButton() == play:
                 print(play_path)
-                QDesktopServices.openUrl(QUrl.fromLocalFile(play_path))
+                try:
+                    os.system(f"xdg-open {play_path}")
+                except Exception as er:
+                    print("error from os.system", play_path, er)
+                QDesktopServices.openUrl(QUrl(play_path))
             elif self.msg.clickedButton() == mpv_play:
                 self.process = QProcess()
                 self.mpv_arguments = []
@@ -1452,7 +1460,11 @@ class MainWindow(QMainWindow):
                     self.popup_message(title="Directory not found!", message="", error=True)
                 else:
                     print(download_path)
-                    QDesktopServices.openUrl(QUrl.fromLocalFile(download_path))
+                    try:
+                        os.system(f"xdg-open {download_path}")
+                    except Exception as er:
+                        print("error from os.system", download_path, er)
+                    QDesktopServices.openUrl(QUrl(download_path))
             else:
                 self.popup_message(title="Please select file first!", message="", error=True)
         except Exception as e:
@@ -1484,7 +1496,11 @@ class MainWindow(QMainWindow):
                     self.popup_message(title="File not found or deleted!", message="", error=True)
                 else:
                     print(file_path)
-                    QDesktopServices.openUrl(QUrl.fromLocalFile(file_path))
+                    try:
+                        os.system(f"xdg-open {file_path}")
+                    except Exception as er:
+                        print("error from os.system", file_path, er)
+                    QDesktopServices.openUrl(QUrl(file_path))
             else:
                 self.popup_message(title="Please select file first!!", message="", error=True)
         except Exception as e:
