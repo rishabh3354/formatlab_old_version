@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="myresource">
+    <file>dark.qss</file>
     <file>resource/check-male--v1.png</file>
      <file>resource/back.png</file>
      <file>resource/check-male--v1.png</file>

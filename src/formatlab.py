@@ -7,7 +7,7 @@ import time
 import webbrowser
 from copy import deepcopy
 from PyQt5 import QtCore, QtWidgets, QtGui
-from PyQt5.QtCore import QUrl, QSettings, QProcess
+from PyQt5.QtCore import QUrl, QSettings, QProcess, QFile, QIODevice, QTextStream
 from PyQt5.QtGui import QDesktopServices, QIcon, QPixmap, QFont
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QFileDialog, QStyle, QCheckBox, \
     QGraphicsScene, QGraphicsPixmapItem, QGraphicsView
@@ -26,9 +26,7 @@ from gui.main_functions import MainFunctions
 from gui.ui_main import Ui_main_window
 
 os.environ["QT_FONT_DPI"] = "100"
-
 PRODUCT_NAME = "FORMAT_LAB"
-THEME_PATH = '/snap/formatlab/current/'
 
 
 class MainWindow(QMainWindow):
@@ -38,7 +36,9 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         MainFunctions.setup_widgets(self)
         self.app_setting_ui = AppSettings()
-        self.theme = open(THEME_PATH + 'dark.qss', 'r').read()
+        sheetfile = QFile(":/myresource/dark.qss")
+        sheetfile.open(QIODevice.ReadOnly)
+        self.theme = QTextStream(sheetfile).readAll()
         self.setStyleSheet(self.theme)
         self.app_setting_ui.setStyleSheet(self.theme)
         self.setWindowTitle("Format Lab Pro")
