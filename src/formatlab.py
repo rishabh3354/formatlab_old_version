@@ -777,9 +777,11 @@ class MainWindow(QMainWindow):
         self.msg.exec_()
         try:
             if self.msg.clickedButton() == open_folder:
-                QDesktopServices.openUrl(QUrl(folder_path))
+                print(folder_path)
+                QDesktopServices.openUrl(QUrl.fromLocalFile(folder_path))
             elif self.msg.clickedButton() == play:
-                QDesktopServices.openUrl(QUrl(play_path))
+                print(play_path)
+                QDesktopServices.openUrl(QUrl.fromLocalFile(play_path))
             elif self.msg.clickedButton() == mpv_play:
                 self.process = QProcess()
                 self.mpv_arguments = []
@@ -1452,7 +1454,8 @@ class MainWindow(QMainWindow):
                 if not os.path.isdir(download_path):
                     self.popup_message(title="Directory not found!", message="", error=True)
                 else:
-                    QDesktopServices.openUrl(QUrl(download_path))
+                    print(download_path)
+                    QDesktopServices.openUrl(QUrl.fromLocalFile(download_path))
             else:
                 self.popup_message(title="Please select file first!", message="", error=True)
         except Exception as e:
@@ -1483,7 +1486,8 @@ class MainWindow(QMainWindow):
                 if not os.path.isfile(file_path):
                     self.popup_message(title="File not found or deleted!", message="", error=True)
                 else:
-                    QDesktopServices.openUrl(QUrl(file_path))
+                    print(file_path)
+                    QDesktopServices.openUrl(QUrl.fromLocalFile(file_path))
             else:
                 self.popup_message(title="Please select file first!!", message="", error=True)
         except Exception as e:
