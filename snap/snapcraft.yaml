@@ -11,6 +11,9 @@ icon: snap/gui/icon.png
 architectures:
   - build-on: [amd64]
 
+environment:
+  SNAP_DESKTOP_RUNTIME: $SNAP/pyqt5-runtime-core20
+
 apps:
   formatlab:
     command: bin/desktop-launch python3 $SNAP/formatlab.py
