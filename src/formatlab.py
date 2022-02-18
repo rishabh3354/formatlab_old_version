@@ -331,8 +331,6 @@ class MainWindow(QMainWindow):
 
             self.load_audio, invalid_file = get_valid_audio_file(self.load_audio)
 
-            print(self.load_audio)
-
             if invalid_file:
                 self.popup_message(title="Invalid Audio File Format!\n\nPlease Select Valid Audio File Format!",
                                    message=f"File: {self.load_audio}  is Invalid Audio File Format.")
@@ -1123,7 +1121,6 @@ class MainWindow(QMainWindow):
                     if str(self.ui.select_format_obj_2.currentText()).split(" - ")[1] == "AUDIO":
                         context["format_type"] = "audio"
 
-                print(context["format_type"])
                 if str(self.ui.select_audio_birtare_in_video.currentText().lower()) != "same as source":
                     context["audio_bitrate"] = (
                         str(self.ui.select_audio_birtare_in_video.currentText()).split(" ")[0]).lower()
