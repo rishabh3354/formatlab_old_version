@@ -61,8 +61,11 @@ parts:
   snap-launcher:
     plugin: dump
     source: snap_launcher/
+    stage-packages:
+      - mpv
     override-build: |
       snapcraftctl build
       sed -i 's|Icon=.*|Icon=${SNAP}/meta/gui/icon.png|g' ${SNAPCRAFT_PART_SRC}/formatlab.desktop
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/share/applications/
       cp -rf ${SNAPCRAFT_PART_SRC}/formatlab.desktop ${SNAPCRAFT_PART_INSTALL}/usr/share/applications/formatlab.desktop
+  
