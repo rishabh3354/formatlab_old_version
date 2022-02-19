@@ -12,7 +12,7 @@ architectures:
   - build-on: [amd64]
 
 environment:
-  SNAP_DESKTOP_RUNTIME: $SNAP/pyqt5-runtime-core20
+  SNAP_DESKTOP_RUNTIME: $SNAP/glances-pro
 
 apps:
   formatlab:
@@ -50,10 +50,10 @@ plugs:
     interface: content
     target: $SNAP/data-dir/sounds
     default-provider: gtk-common-themes
-  pyqt5-runtime-core20:
+  glances-pro:
     interface: content
-    target: $SNAP/pyqt5-runtime-core20
-    default-provider: pyqt5-runtime-core20
+    target: $SNAP/glances-pro
+    default-provider: glances-pro
 
 
 parts:
