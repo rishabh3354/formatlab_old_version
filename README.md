@@ -65,3 +65,11 @@ If CPU Temp is not Coming/not accurate in the System Monitor, then run below com
 *Uniconverter, VideoProc Converter, Leawo Video Converter, WinX Video Converter, iDealshare, FonePaw, HitPaw, AVS, Movavi, Freemake, AVC, Prism, HandBrake, Wonderfox, VideoStudio, AnyMP4 Video Converter Ultimate, Aiseesoft Video Converter Ultimate, Acethinker, Stellar, Gilisoft, Porgram4pc, Cisdem, Tipard, Any Video Converter Free, Zamzar, Online-Convert, DVD VideoSoft, Hamster, MediaCoder, Gihosoft,  Clone2Go, Free Audio Video Pack, iTube Studio, Cloud Convert, Aconvert, vsdc, video2audio, videotoaudio, videotomp3 converter*
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
+
+**To Install, use cmd:**
+
+    snap install formatlab
+
+[Get it from Snapstore](https://snapcraft.io/formatlab)
+
+![enter image description here](https://camo.githubusercontent.com/ab077b20ad9938c23fbdac223ab101df5ed27329bbadbe7f98bfd62d5808f0a7/68747470733a2f2f736e617063726166742e696f2f7374617469632f696d616765732f6261646765732f656e2f736e61702d73746f72652d626c61636b2e737667)
