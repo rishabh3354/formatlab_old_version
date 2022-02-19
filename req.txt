@@ -1,6 +1,0 @@
-pyqt5
-requests
-cryptography
-psutil
-ffmpeg-python
-python-slugify
