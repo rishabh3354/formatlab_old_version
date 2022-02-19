@@ -1,0 +1,6 @@
+*.pyo
+*.pyc
+migrations/
+*.xml
+*.iml
+.idea/
