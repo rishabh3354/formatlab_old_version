@@ -16,7 +16,11 @@ environment:
 
 apps:
   formatlab:
-    command: bin/desktop-launch python3 $SNAP/formatlab.py
+    command: bin/desktop-launch formatlab
+    desktop: formatlab.desktop
+    environment:
+      DISABLE_WAYLAND: 1
+
     plugs:
        - home
        - gsettings
@@ -31,7 +35,6 @@ apps:
        - opengl
        - audio-playback
        - hardware-observe
-    desktop: formatlab.desktop
 
 plugs:
   gsettings:
@@ -54,27 +57,11 @@ plugs:
 
 
 parts:
-  desktop-gui:
+  snap-launcher:
     plugin: dump
-    source: src/
+    source: snap_launcher/
     override-build: |
       snapcraftctl build
       sed -i 's|Icon=.*|Icon=${SNAP}/meta/gui/icon.png|g' ${SNAPCRAFT_PART_SRC}/formatlab.desktop
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/share/applications/
       cp -rf ${SNAPCRAFT_PART_SRC}/formatlab.desktop ${SNAPCRAFT_PART_INSTALL}/usr/share/applications/formatlab.desktop
-
-
-  snap-launcher:
-    plugin: dump
-    source: snap_launcher/
-
-  formatlab:
-      plugin: python
-      source: .
-      python-packages:
-          - requests
-          - cryptography
-          - psutil
-          - ffmpeg-python
-          - python-slugify
-      build-attributes: [ keep-execstack ]
