@@ -10,6 +10,8 @@ IF APP IS NOT LAUNCHING AFTER INSTALL, THEN RUN CMD BELOW IN YOUR SHELL
 
 **FormatLab** is a powerful **Video/Audio Converter** and Compressor for Linux OS which supports MP3, MP4, AVI, WMV, MKV or other file formats with **Lossless Quality** conversion. 
 
+***Updates:** Drag and Drop feature to add audio video files are added.*
+
 
 **FEATURES :** 
 
@@ -17,6 +19,7 @@ IF APP IS NOT LAUNCHING AFTER INSTALL, THEN RUN CMD BELOW IN YOUR SHELL
  - Convert large HD videos and movies as well.
  - Convert Video into **25+ supported output formats** in one click
  - Support **10+ Popular Audio** format with bitrate and channel enhancement
+ - Support Drag and Drop files into the app
  - Support Video Quality options to change lossless quality for a video
    file
  - Support FPS option to decrease frame per second of a video
